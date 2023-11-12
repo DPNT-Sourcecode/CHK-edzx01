@@ -15,7 +15,7 @@ object CheckoutSolution {
         val skuCounts = skus.groupingBy { it }.eachCount()
 
         return priceTable.entries.sumOf { (sku, item) ->
-            val count: Int = (skuCounts as Map<Kotlin.Char, Int>)[sku] ?: 0
+            val count: Int = (skuCounts as Map<Char, Int>)[sku] ?: 0
             calculateTotal(item, count)
         }
     }
@@ -28,3 +28,4 @@ object CheckoutSolution {
      }
 
 }
+
