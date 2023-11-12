@@ -10,7 +10,7 @@ object CheckoutSolution {
 
         for (item in skus) {
             when (item) {
-                'A', 'B', 'C', 'D', 'E' -> counts[item] = counts.getOrDefault(item, 0) +1
+                'A', 'B', 'C', 'D', 'E', 'F' -> counts[item] = counts.getOrDefault(item, 0) +1
                 else -> return -1
             }
         }
