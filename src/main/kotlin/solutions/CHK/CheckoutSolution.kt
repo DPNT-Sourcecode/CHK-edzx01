@@ -4,27 +4,25 @@ import kotlin.jvm.internal.Intrinsics.Kotlin
 
 object CheckoutSolution {
 
-    data class Item(val price: Int, val offer: Pair<Int, Int>? = null)
-    val priceTable = mapOf(
-        "A" to Item(50, Pair(3, 130)),
-        "B" to Item(30, Pair(2,45)),
-        "C" to Item(20),
-        "D" to Item(15)
-    )
     fun checkout(skus: String): Int {
-        val skuCounts = skus.groupingBy { it }.eachCount()
+        val prices = mapOf( 'A' to 50, 'B' to 30, 'C' to 20, 'D' to 15 )
+        val offers = mapOf('A' to Pair(3, 130), 'B' to Pair(2,45))
 
-        return priceTable.entries.sumOf { (sku, item) ->
-            val count = skuCounts.getOrDefault(sku, 0)
-            calculateTotal(item, count)
+        var total = 0
+        val counts = mutableMapOf<Char, Int>()
+
+        for (sku in skus) {
+            if (!prices.containsKey(sku)) return -1
+
+            counts[sku] = counts.getOrDefault(sku, 0) + 1
+            total += prices[sku]!!
+
+            if (offers.containsKey(sku) && counts[sku]!! % offers[sku]!!.first == 0) {
+                total -= (offers[sku]!!.first -1 ) * prices[sku]!!
+                total += offers[sku]!!.second - prices[sku]!!
+            }
         }
+        return  total
     }
-
-    private fun calculateTotal(item: Item, count: Int): Int {
-        return  if (count ==0) 0
-        else item.offer?.let { (req, offerPRice) ->
-            (count / req) * offerPRice + (count % req) * item.price
-        } ?: (count * item.price)
-     }
 
 }
