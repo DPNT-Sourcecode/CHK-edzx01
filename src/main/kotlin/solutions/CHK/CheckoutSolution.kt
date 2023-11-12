@@ -15,11 +15,12 @@ object CheckoutSolution {
             }
         }
 
+        // Handle E offers
         while (counts.getOrDefault('E', 0) >= 2) {
             total += 80
-            counts['E'] = counts.getOrDefault('E', 0) -2
+            counts['E'] = counts.getOrDefault('E', 0) - 2
             if (counts.getOrDefault('B', 0) >0) {
-                counts['B'] = counts.getOrDefault('B', 0)
+                counts['B'] = counts.getOrDefault('B', 0) - 1
             }
         }
 
