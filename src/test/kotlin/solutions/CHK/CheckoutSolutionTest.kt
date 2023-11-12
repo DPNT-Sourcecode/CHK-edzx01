@@ -197,5 +197,3 @@ class CheckoutSolution2Tests {
 }
 
 
-
-
