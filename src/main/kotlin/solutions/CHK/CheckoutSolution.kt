@@ -2,8 +2,12 @@ package solutions.CHK
 
 object CheckoutSolution {
 
-    fun checkout(skus: String): Int {
+    data class Item(val price: Int, val offer: Pair<Int, Int>? = null)
+    val priceTable: mapOf(
         
+    )
+    fun checkout(skus: String): Int {
+
     }
 
 }
