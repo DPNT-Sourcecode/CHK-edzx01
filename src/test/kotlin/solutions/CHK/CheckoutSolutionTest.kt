@@ -135,6 +135,11 @@ class CheckoutSolution2Tests {
     }
 
     @Test
+    fun `mixed items AAAAAEEBAAAFBBFF`() {
+        assertEquals(475, CheckoutSolution.checkout("AAAAAEEBAAAFBBFF"))
+    }
+
+    @Test
     fun `mixed items AAAAABAAABB`() {
         assertEquals(405, CheckoutSolution.checkout("AAAAABAAABB"))
     }
@@ -190,6 +195,7 @@ class CheckoutSolution2Tests {
 
 
 }
+
 
 
 
