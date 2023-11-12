@@ -23,9 +23,14 @@ object CheckoutSolution {
                 counts['B'] = counts.getOrDefault('B', 0) - 1
             }
         }
-
         total += counts.getOrDefault('E', 0) * 40
 
+        // handle F offers
+        while (counts.getOrDefault('F', 0) >= 3) {
+            total += 20
+            counts['F'] = counts.getOrDefault('F', 0) - 3
+        }
+        total += counts.getOrDefault('F', 0) * 10
         // Handle A offers
         total += (counts.getOrDefault('A', 0) /5)* 200
         counts['A'] = counts.getOrDefault('A', 0) % 5

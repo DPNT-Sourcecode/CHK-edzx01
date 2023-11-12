@@ -97,6 +97,29 @@ class CheckoutSolution2Tests {
     }
 
     @Test
+    fun `one F`() {
+        assertEquals(10, CheckoutSolution.checkout("F"))
+    }
+    @Test
+    fun `two F`() {
+        assertEquals(20, CheckoutSolution.checkout("FF"))
+    }
+
+    @Test
+    fun `three F`() {
+        assertEquals(20, CheckoutSolution.checkout("FFF"))
+    }
+
+    @Test
+    fun `four F`() {
+        assertEquals(30, CheckoutSolution.checkout("FFFF"))
+    }
+    @Test
+    fun `seven F`() {
+        assertEquals(50, CheckoutSolution.checkout("FFFFFFF"))
+    }
+
+    @Test
     fun `mixed items ABCA`() {
         assertEquals(150, CheckoutSolution.checkout("ABCA"))
     }
@@ -167,5 +190,6 @@ class CheckoutSolution2Tests {
 
 
 }
+
 
 
