@@ -26,8 +26,22 @@ object CheckoutSolution {
         total += counts.getOrDefault('E', 0) * 40
 
         // Handle A offers
+        total += (counts.getOrDefault('A', 0) /5)* 200
+        counts['A'] = counts.getOrDefault('A', 0) % 5
+        total +=  (counts.getOrDefault('A', 0) /3)* 130
+        counts['A'] = counts.getOrDefault('A', 0) % 3
+        total +=  (counts.getOrDefault('A', 0))* 50
 
+        // Handle B  offers
+        total += (counts.getOrDefault('B', 0) /2) * 45
+        counts['B'] = counts.getOrDefault('B', 0) % 2
+        total += counts.getOrDefault('B', 0) * 30
 
+        // Handle C & D
+        total += counts.getOrDefault('C', 0) * 20
+        total += counts.getOrDefault('D', 0) * 15
+
+        return total
     }
 
 }
