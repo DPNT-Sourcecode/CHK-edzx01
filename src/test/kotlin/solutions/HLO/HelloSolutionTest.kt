@@ -8,4 +8,5 @@ class HelloSolutionTest {
     fun sum() {
         Assertions.assertEquals("Hello, Craftsman!", HelloSolution.hello("Craftsman"))
     }
+
 }
