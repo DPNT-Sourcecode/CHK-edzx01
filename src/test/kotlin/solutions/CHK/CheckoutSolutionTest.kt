@@ -344,4 +344,3 @@ class CheckoutSolution4Test {
     }
 
 }
-
