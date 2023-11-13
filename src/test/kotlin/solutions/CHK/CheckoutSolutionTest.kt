@@ -4,21 +4,29 @@ package solutions.CHK
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-class CheckoutSolution2Tests {
+class CheckoutSolution4Test {
 
     @Test
     fun `empty basket returns 0`() {
         assertEquals(0, CheckoutSolution.checkout(""))
     }
-    
+
+
     @Test
-    fun `invalid AxA`() {
+    fun `invalid input AxA`() {
         assertEquals(-1, CheckoutSolution.checkout("AxA"))
     }
-
+    @Test
+    fun `invalid input with digits`() {
+        assertEquals(-1, CheckoutSolution.checkout("1"))
+    }
+    @Test
+    fun `invalid input with special characters`() {
+        assertEquals(-1, CheckoutSolution.checkout("&"))
+    }
 
     @Test
-    fun `single item A returns correct price`() {
+    fun `single item A`() {
         assertEquals(50, CheckoutSolution.checkout("A"))
     }
 
@@ -61,6 +69,10 @@ class CheckoutSolution2Tests {
     fun `three items B returns correct price with 2B special offer`() {
         assertEquals(75, CheckoutSolution.checkout("BBB"))
     }
+    @Test
+    fun `four B`() {
+        assertEquals(90, CheckoutSolution.checkout("BBBB"))
+    }
 
     @Test
     fun `one C`() {
@@ -100,12 +112,6 @@ class CheckoutSolution2Tests {
     fun `two F`() {
         assertEquals(20, CheckoutSolution.checkout("FF"))
     }
-
-    @Test
-    fun `three F`() {
-        assertEquals(20, CheckoutSolution.checkout("FFF"))
-    }
-
     @Test
     fun `four F`() {
         assertEquals(30, CheckoutSolution.checkout("FFFF"))
@@ -116,8 +122,74 @@ class CheckoutSolution2Tests {
     }
 
     @Test
+    fun `one G`() {
+        assertEquals(20, CheckoutSolution.checkout("G"))
+    }
+    @Test
+    fun `two G`() {
+        assertEquals(40, CheckoutSolution.checkout("GG"))
+    }
+
+    @Test
+    fun `one H`() {
+        assertEquals(10, CheckoutSolution.checkout("H"))
+    }
+    @Test
+    fun `five H`() {
+        assertEquals(45, CheckoutSolution.checkout("HHHHH"))
+    }
+    @Test
+    fun `ten H`() {
+        assertEquals(80, CheckoutSolution.checkout("HHHHHHHHHH"))
+    }
+
+    @Test
+    fun `one I`() {
+        assertEquals(35, CheckoutSolution.checkout("I"))
+    }
+    @Test
+    fun `one J`() {
+        assertEquals(60, CheckoutSolution.checkout("J"))
+    }
+
+    @Test
+    fun `one K`() {
+        assertEquals(80, CheckoutSolution.checkout("K"))
+    }
+    @Test
+    fun `two K`() {
+        assertEquals(150, CheckoutSolution.checkout("KK"))
+    }
+
+    @Test
+    fun `one L`() {
+        assertEquals(90, CheckoutSolution.checkout("L"))
+    }
+
+    @Test
+    fun `one M`() {
+        assertEquals(15, CheckoutSolution.checkout("M"))
+    }
+
+    @Test
+    fun `one N`() {
+        assertEquals(40, CheckoutSolution.checkout("N"))
+    }
+
+    @Test
+    fun `three N`() {
+        assertEquals(120, CheckoutSolution.checkout("NNN"))
+    }
+
+
+    @Test
     fun `mixed items ABCA`() {
         assertEquals(150, CheckoutSolution.checkout("ABCA"))
+    }
+
+    @Test
+    fun `mixed items ABCAF`() {
+        assertEquals(160, CheckoutSolution.checkout("ABCAF"))
     }
 
     @Test
@@ -129,6 +201,8 @@ class CheckoutSolution2Tests {
     fun `mixed items AAAAAEEBAAABB`() {
         assertEquals(455, CheckoutSolution.checkout("AAAAAEEBAAABB"))
     }
+
+
 
     @Test
     fun `mixed items AAAAAEEBAAAFBBFF`() {
@@ -145,17 +219,32 @@ class CheckoutSolution2Tests {
     }
 
     @Test
-    fun `invalid input with digits returns -1`() {
-        assertEquals(-1, CheckoutSolution.checkout("1"))
+    fun `long input with repeating items`() {
+        assertEquals(280, CheckoutSolution.checkout("ABCDEABCDE"))
     }
 
     @Test
-    fun `invalid input with special characters returns -1`() {
-        assertEquals(-1, CheckoutSolution.checkout("&"))
+    fun `long mixed input`() {
+        assertEquals(280, CheckoutSolution.checkout("CCADDEEBBA"))
     }
 
     @Test
-    fun `two E plus one B`() {
+    fun `single item B`() {
+        assertEquals(30, CheckoutSolution.checkout("B"))
+    }
+
+    @Test
+    fun `two B with special offer`() {
+        assertEquals(45, CheckoutSolution.checkout("BB"))
+    }
+
+    @Test
+    fun `single item E`() {
+        assertEquals(40, CheckoutSolution.checkout("E"))
+    }
+
+    @Test
+    fun `two E plus one B with special offer`() {
         assertEquals(80, CheckoutSolution.checkout("EEB"))
     }
 
@@ -170,27 +259,89 @@ class CheckoutSolution2Tests {
     }
 
     @Test
-    fun `mixed items with multiple Es and Bs`() {
-        assertEquals(160, CheckoutSolution.checkout("BEBEEE"))
+    fun `five H with special offer`() {
+        assertEquals(45, CheckoutSolution.checkout("HHHHH"))
     }
 
     @Test
-    fun `four B`() {
-        assertEquals(90, CheckoutSolution.checkout("BBBB"))
+    fun `ten H with second special offer`() {
+        assertEquals(80, CheckoutSolution.checkout("HHHHHHHHHH"))
+    }
+
+
+    @Test
+    fun `three N with offer`() {
+        assertEquals(120, CheckoutSolution.checkout("NNNM"))
     }
 
     @Test
-    fun `long input with repeating items`() {
-        assertEquals(280, CheckoutSolution.checkout("ABCDEABCDE"))
+    fun `one O`() {
+        assertEquals(10, CheckoutSolution.checkout("O"))
     }
 
     @Test
-    fun `long mixed input`() {
-        assertEquals(280, CheckoutSolution.checkout("CCADDEEBBA"))
+    fun `one P`() {
+        assertEquals(50, CheckoutSolution.checkout("P"))
     }
 
+    @Test
+    fun `five P with special offer`() {
+        assertEquals(200, CheckoutSolution.checkout("PPPPP"))
+    }
+
+    @Test
+    fun `three Q with special offer`() {
+        assertEquals(80, CheckoutSolution.checkout("QQQ"))
+    }
+
+    @Test
+    fun `three R with special offer`() {
+        assertEquals(150, CheckoutSolution.checkout("RRRQ"))
+    }
+
+    @Test
+    fun `one S`() {
+        assertEquals(30, CheckoutSolution.checkout("S"))
+    }
+    @Test
+    fun `one T`() {
+        assertEquals(20, CheckoutSolution.checkout("T"))
+    }
+
+    @Test
+    fun `three U with special offer`() {
+        assertEquals(120, CheckoutSolution.checkout("UUUU"))
+    }
+
+    @Test
+    fun `two V with first special offer`() {
+        assertEquals(90, CheckoutSolution.checkout("VV"))
+    }
+
+    @Test
+    fun `three V with second special offer`() {
+        assertEquals(130, CheckoutSolution.checkout("VVV"))
+    }
+
+    @Test
+    fun `one W`() {
+        assertEquals(20, CheckoutSolution.checkout("W"))
+    }
+
+    @Test
+    fun `one X`() {
+        assertEquals(90, CheckoutSolution.checkout("X"))
+    }
+
+    @Test
+    fun `one Y`() {
+        assertEquals(10, CheckoutSolution.checkout("Y"))
+    }
+
+    @Test
+    fun `one Z`() {
+        assertEquals(50, CheckoutSolution.checkout("Z"))
+    }
 
 }
-
-
 
