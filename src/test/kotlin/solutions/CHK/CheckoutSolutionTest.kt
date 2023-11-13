@@ -4,13 +4,12 @@ package solutions.CHK
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-class CheckoutSolution4Test {
+class CheckoutSolution5Test {
 
     @Test
     fun `empty basket returns 0`() {
         assertEquals(0, CheckoutSolution.checkout(""))
     }
-
 
     @Test
     fun `invalid input AxA`() {
@@ -154,11 +153,11 @@ class CheckoutSolution4Test {
 
     @Test
     fun `one K`() {
-        assertEquals(80, CheckoutSolution.checkout("K"))
+        assertEquals(70, CheckoutSolution.checkout("K"))
     }
     @Test
     fun `two K`() {
-        assertEquals(150, CheckoutSolution.checkout("KK"))
+        assertEquals(120, CheckoutSolution.checkout("KK"))
     }
 
     @Test
@@ -301,8 +300,9 @@ class CheckoutSolution4Test {
 
     @Test
     fun `one S`() {
-        assertEquals(30, CheckoutSolution.checkout("S"))
+        assertEquals(20, CheckoutSolution.checkout("S"))
     }
+
     @Test
     fun `one T`() {
         assertEquals(20, CheckoutSolution.checkout("T"))
@@ -330,17 +330,27 @@ class CheckoutSolution4Test {
 
     @Test
     fun `one X`() {
-        assertEquals(90, CheckoutSolution.checkout("X"))
+        assertEquals(17, CheckoutSolution.checkout("X"))
     }
 
     @Test
     fun `one Y`() {
-        assertEquals(10, CheckoutSolution.checkout("Y"))
+        assertEquals(20, CheckoutSolution.checkout("Y"))
     }
 
     @Test
     fun `one Z`() {
-        assertEquals(50, CheckoutSolution.checkout("Z"))
+        assertEquals(21, CheckoutSolution.checkout("Z"))
+    }
+
+    @Test
+    fun `combination STX for 45`() {
+        assertEquals(45, CheckoutSolution.checkout("STX"))
+    }
+
+    @Test
+    fun `combination XYZ for 45`() {
+        assertEquals(45, CheckoutSolution.checkout("XYZ"))
     }
 
 }

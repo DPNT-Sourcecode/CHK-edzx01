@@ -8,15 +8,32 @@ object CheckoutSolution {
         var total = 0
         val counts = mutableMapOf<Char, Int>()
         val groupDiscountItems = listOf('S', 'T', 'X', 'Y', 'Z')
-        val individualPrices = mapOf<>()
+        val individualPrices = mapOf('S' to 20, 'T' to 20, 'X' to 17, 'Y' to 20, 'Z' to 21)
+
 
         for (item in skus) {
             when (item) {
                 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' -> counts[item] =
                     counts.getOrDefault(item, 0) + 1
+
                 else -> return -1
             }
         }
+
+        // Handle group discount offers
+        var groupDiscountCount = groupDiscountItems.sumBy { counts.getOrDefault(it, 0) }
+        while (groupDiscountCount >= 3) {
+            total += 45
+            groupDiscountCount -= 3
+            // Remove the items that were part of the group discount from the counts map
+            for (item in groupDiscountItems) {
+                if (counts.getOrDefault(item, 0) > 0) {
+                    counts[item] = counts.getOrDefault(item, 0) - 1
+                }
+            }
+        }
+        total += groupDiscountItems.sumBy { counts.getOrDefault(it, 0) * individualPrices.getOrDefault(it, 0) }
+
 
         // Handle E offers
         while (counts.getOrDefault('E', 0) >= 2) {
@@ -48,10 +65,10 @@ object CheckoutSolution {
 
         // Handle K offers
         while (counts.getOrDefault('K', 0) >= 2) {
-            total += 150
+            total += 120
             counts['K'] = counts.getOrDefault('K', 0) - 2
         }
-        total += counts.getOrDefault('K', 0) * 80
+        total += counts.getOrDefault('K', 0) * 70
 
         // Handle N offers
         while (counts.getOrDefault('N', 0) >= 3) {
@@ -70,7 +87,6 @@ object CheckoutSolution {
         }
         total += counts.getOrDefault('P', 0) * 50
 
-
         // Handle R offers
         while (counts.getOrDefault('R', 0) >= 3) {
             total += 150
@@ -80,7 +96,6 @@ object CheckoutSolution {
             }
         }
         total += counts.getOrDefault('R', 0) * 50
-
 
         // Handle Q offers
         while (counts.getOrDefault('Q', 0) >= 3) {
@@ -123,19 +138,16 @@ object CheckoutSolution {
         total += counts.getOrDefault('C', 0) * 20
         total += counts.getOrDefault('D', 0) * 15
 
-        // Handle G, I, J, L, O, S, T, W, X, Y, Z
+        // Handle G, I, J, L, O, S, T, W, Y, Z
         total += counts.getOrDefault('G', 0) * 20
         total += counts.getOrDefault('I', 0) * 35
         total += counts.getOrDefault('J', 0) * 60
         total += counts.getOrDefault('L', 0) * 90
         total += counts.getOrDefault('M', 0) * 15
         total += counts.getOrDefault('O', 0) * 10
-        total += counts.getOrDefault('S', 0) * 30
-        total += counts.getOrDefault('T', 0) * 20
         total += counts.getOrDefault('W', 0) * 20
-        total += counts.getOrDefault('X', 0) * 90
-        total += counts.getOrDefault('Y', 0) * 10
-        total += counts.getOrDefault('Z', 0) * 50
+
+
 
         return total
     }
