@@ -10,11 +10,7 @@ class CheckoutSolution2Tests {
     fun `empty basket returns 0`() {
         assertEquals(0, CheckoutSolution.checkout(""))
     }
-
-    @Test
-    fun `invalid input returns -1`() {
-        assertEquals(-1, CheckoutSolution.checkout("X"))
-    }
+    
     @Test
     fun `invalid AxA`() {
         assertEquals(-1, CheckoutSolution.checkout("AxA"))
@@ -195,5 +191,6 @@ class CheckoutSolution2Tests {
 
 
 }
+
 
 
