@@ -7,6 +7,8 @@ object CheckoutSolution {
     fun checkout(skus: String): Int {
         var total = 0
         val counts = mutableMapOf<Char, Int>()
+        val groupDiscountItems = listOf('S', 'T', 'X', 'Y', 'Z')
+        val individualPrices = mapOf<>()
 
         for (item in skus) {
             when (item) {
